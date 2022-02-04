@@ -20,4 +20,20 @@ git clone https://github.com/georgekcibi/docker-wordpress.git
 - ### Execute the docker-compose.yml
 
 ```
+root@ubuntu:~/wordpresscomposer# docker-compose -f wordpress.yml up -d
+Creating network "wordpresscomposer_default" with the default driver
+Creating volume "wordpresscomposer_database" with default driver
+Creating volume "wordpresscomposer_wordpress1" with default driver
+Creating wordpress         ... done
+Creating wordpressdatabase ... done
 ```
+
+- ### You can now see containers running
+
+```
+root@ubuntu:~# docker ps
+CONTAINER ID   IMAGE              COMMAND                  CREATED        STATUS        PORTS                                                  NAMES
+76c179afb714   mysql:5.7          "docker-entrypoint.s…"   3 hours ago    Up 3 hours    3306/tcp, 33060/tcp                                    wordpressdatabase
+b652065f2436   wordpress:latest   "docker-entrypoint.s…"   3 hours ago    Up 3 hours    0.0.0.0:8000->80/tcp, :::8000->80/tcp                  wordpress
+```
+

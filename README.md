@@ -1,4 +1,4 @@
-# Running wordpress is Docker containers
+# Deploying Wordpress in a Docker container
 
 This is a documentation to create a Wordpress website using Docker containers. Running WordPress in Docker requires two separate containers: a web container, running Apache and PHP, and a database container, hosting MySQL.
 

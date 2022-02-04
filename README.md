@@ -39,3 +39,4 @@ b652065f2436   wordpress:latest   "docker-entrypoint.s…"   3 hours ago    Up 3
 
 - ### Load IP:8000 in your browser and complete the wordpress setup
 
+![Alt text](http://192.168.1.8:8000/wp-admin/install.php)

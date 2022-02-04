@@ -37,3 +37,5 @@ CONTAINER ID   IMAGE              COMMAND                  CREATED        STATUS
 b652065f2436   wordpress:latest   "docker-entrypoint.s…"   3 hours ago    Up 3 hours    0.0.0.0:8000->80/tcp, :::8000->80/tcp                  wordpress
 ```
 
+- ### Load IP:8000 in your browser and complete the wordpress setup.
+

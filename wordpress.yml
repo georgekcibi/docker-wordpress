@@ -1,8 +1,11 @@
 version: '3'
 services:
+  
   wordpressdatabase:
-    image: 'mysql:5.7'
-    container_name: 'wordpressdatabase'
+    image: mysql:5.7
+    container_name: wordpressdatabase
+    networks:
+      - wordpress_network
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: rootpassword
@@ -10,20 +13,40 @@ services:
       MYSQL_USER: wordpressuser1
       MYSQL_PASSWORD: wordpresspassword
     volumes:
-      - 'database:/var/lib/mysql'
+      - database:/var/lib/mysql
+  
   wordpress:
-    image: 'wordpress:latest'
-    container_name 'wordpress'
+    image: wordpress:latest
+    container_name: wordpress
     restart: always
+    networks:
+      - wordpress_network    
     ports:
-      - '8000:80'
+      - 80:80
     environment:
-      WORDPRESS_DB_HOST: 'wordpressdatabase:3306'
+      WORDPRESS_DB_HOST: wordpressdatabase
       WORDPRESS_DB_USER: wordpressuser1
       WORDPRESS_DB_PASSWORD: wordpresspassword
       WORDPRESS_DB_NAME: wordpressdb1
     volumes:
-      - 'wordpress1:/var/www/html'
+      - wordpress1:/var/www/html
+
+  phpmyadmin:
+   image: phpmyadmin
+   container_name: phpmyadmin
+   restart: always
+   networks:
+    - wordpress_network
+   ports:
+    - 8080:80
+   environment:
+     PMA_ARBITRARY: 1
+     PMA_HOST: wordpressdatabase
+     PMA_PORT: 3306
+    
 volumes:
-  database: null
-  wordpress1: null
+  database:
+  wordpress1:
+
+networks:
+   wordpress_network:
